@@ -1,44 +1,40 @@
 "use strict";
 function getResult(a,b,c){
-let d = Math.pow(b, 2) - 4 * a * c;
+  let d = Math.pow(b, 2) - 4 * a * c;
+      x = [];
 if (d == 0) {
-    x = -b / 2 * a;
-} else if (d < 0) {
-    x = -b / 2 * a;
- } else if (d > 0) { // у d будет 2 корня, не понимаю, как их написать и вывести 2 ответа
-    x = 
- };
-    // return x;
-}
+  x[0] = -b / (2 * a);
+   return x;
+  } else if (d < 0) {
+    return 0;
+     } else if (d > 0) {
+      x[0] = (-b + Math.sqrt(d)) / (2 * a);
+      x[1] = (-b - Math.sqrt(d)) / (2 * a);
+      return x;
+    }
+};
 
 function getAverageMark(marks){
-    let marks = [1, 1, 1, 1, 1, 1, 1];
-    sumMarks = 0;
- if (marks.length == 0) {
-   console.log('0');
-} else {
-   for (let i = 0; i < marks.length; i++) {
-    console.log(marks[i]);
-    let marksSlice = marks.splice(0, 5);
-    console.log(marksSlice); // почему то возвращает 1, хотя должен возращать сумму
-    sumMarks = sumMarks + parseInt(marksSlice);
-    console.log("Сумма" + sumMarks);
-    let x = sumMarks / marks.length;
-      console.log( "Итог" + x);
-
-    if (marks.length > 5) {
-      console.log("Оценок больше 5")
-    }
-   }
-};
-    // return averageMark;
+  sumMarks = 0;
+  if (marks.length == 0) {
+    averageMark = marks.length;
+     return averageMark;
+  } else if (marks.length > 5) {
+       console.log("Оценок больше 5");
+     for (let i = 0; i < marks.length; i++) {
+       let marksSlice = marks.splice(5, 1);
+           sumMarks += marks[i];
+      };
+       let averageMark = sumMarks / marks.length;
+        return averageMark;
+    };
 }
 
 function askDrink(name,dateOfBirthday){
-    let date = new Date();
+    let date = new Date().getFullYear();
         failMessage = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
         confirmMessage = `Не желаете ли олд-фэшн, ${name}?`;
-        newDate = date.getFullYear() - dateOfBirthday;
+        newDate = date - dateOfBirthday.getFullYear();
     if (newDate < 18) {
       return failMessage;
     } else {
